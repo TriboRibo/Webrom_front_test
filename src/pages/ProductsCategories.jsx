@@ -1,14 +1,29 @@
 import React from 'react';
-import Navbar from "../components/Navbar";
+import {useNavigate} from "react-router-dom";
 
 const ProductsCategories = () => {
+
+	const nav = useNavigate()
+
+	const categories = ['Plants', 'Accessories', 'Tools']
+
+	const categoryClick = (category) => {
+		nav(`/products/${category}`);
+	}
+
 	return (
 		<>
 			<div className=''>
-				<div className='flex justify-between items-center h-full'>
-					<h1>Produktu kategorijos</h1>
-					<Navbar/>
-					<button className='btn bg-transparent h-[45px] w-[185px]'>Pridėti produktą +</button>
+				<div>
+					{categories.map((category, index) => (
+						<div
+							key={index}
+							onClick={() => categoryClick(category)}
+							className="category-item"
+						>
+							{category}
+						</div>
+					))}
 				</div>
 			</div>
 		</>

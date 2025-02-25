@@ -1,28 +1,35 @@
 import React from 'react';
-import {BrowserRouter, Route, Routes, Navigate} from "react-router-dom";
+import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Toolbar from "./components/Toolbar.jsx";
 import ProductsCategories from "./pages/ProductsCategories";
 import Collections from "./pages/Collections";
 import Care from "./pages/Care";
 import Contacts from "./pages/Contacts";
+import ProductList from "./pages/ProductList";
+import AddNewProduct from "./pages/AddNewProduct";
+import MainLayout from "./layouts/MainLayout";
 
 const App = () => {
-  return (
-      <>
-          <BrowserRouter>
-              <div className='ps-[100px] pe-[100px] backGround min-h-screen'>
-                  <Toolbar/>
-                  <Routes>
-                      <Route path='/products' element={<ProductsCategories/>}/>
-                      <Route path='/collections' element={<Collections/>}/>
-                      <Route path='/care' element={<Care/>}/>
-                      <Route path='/contacts' element={<Contacts/>}/>
-                  </Routes>
-              </div>
-          </BrowserRouter>
 
-      </>
-  );
+	return (
+		<>
+			<BrowserRouter>
+				<div className='ps-[100px] pe-[100px] backGround min-h-screen'>
+					<Toolbar/>
+					<Routes>
+						<Route element={<MainLayout/>}>
+							<Route path='/products' element={<ProductsCategories/>}/>
+							<Route path='/products/:category' element={<ProductList/>}/>
+							<Route path='/collections' element={<Collections/>}/>
+							<Route path='/care' element={<Care/>}/>
+							<Route path='/contacts' element={<Contacts/>}/>
+						</Route>
+						<Route path='/addproduct' element={<AddNewProduct/>}/>
+					</Routes>
+				</div>
+			</BrowserRouter>
+		</>
+	);
 };
 
 export default App;

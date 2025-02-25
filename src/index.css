@@ -31,3 +31,31 @@ h1 {
 .btn:hover {
     background-color: #1F74B7;
 }
+.item-card {
+    display: flex;
+    width: 400px;
+}
+.item-card-image {
+    width: 200px;
+    height: 320px;
+    background: #FFFFFF;
+    border-radius: 10px 0 10px 10px;
+}
+.item-card-description {
+    width: 200px;
+    height: 254px;
+    background: #FFFFFF;
+    border-radius: 0 10px 10px 0;
+    position: relative;
+}
+.item-card-description::after {
+    content: "";
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    background: transparent;
+    border-radius: 50%;
+    box-shadow: -10px -10px 0 #FFFFFF;
+}
