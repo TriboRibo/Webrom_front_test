@@ -4,7 +4,6 @@ import Navbar from "../components/Navbar";
 const Contacts = () => {
 	return (
 		<>
-			<Navbar/>
 		</>
 	);
 };
