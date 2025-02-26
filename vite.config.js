@@ -6,5 +6,4 @@ export default defineConfig({
 	plugins: [
 		react(),
 	],
-	base: '/Webrom_front_test'
 })
