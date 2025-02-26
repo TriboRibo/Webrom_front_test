@@ -3,7 +3,9 @@ import React from 'react';
 const AddNewProduct = () => {
 	return (
 		<>
-			1233
+			<div>
+
+			</div>
 		</>
 	);
 };
