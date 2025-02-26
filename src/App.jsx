@@ -8,6 +8,7 @@ import Contacts from "./pages/Contacts";
 import ProductList from "./pages/ProductList";
 import AddNewProduct from "./pages/AddNewProduct";
 import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
 					<Toolbar/>
 					<Routes>
 						<Route element={<MainLayout/>}>
+							<Route path='/' element={<Home/>}/>
 							<Route path='/products' element={<ProductsCategories/>}/>
 							<Route path='/products/:category' element={<ProductList/>}/>
 							<Route path='/collections' element={<Collections/>}/>
