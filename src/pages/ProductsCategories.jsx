@@ -5,7 +5,15 @@ const ProductsCategories = () => {
 
 	const nav = useNavigate()
 
-	const categories = ['Plants', 'Accessories', 'Tools']
+	//hardcoded labels
+	const categoryLabels = {
+		Plants: 'Sodo augalai',
+		Tools: 'Įrankiai',
+		Accessories: 'Priedai',
+	}
+
+	// const categories = ['Plants', 'Accessories', 'Tools']
+	const categories = Object.keys(categoryLabels)
 
 	const categoryClick = (category) => {
 		nav(`/products/${category}`);
@@ -16,13 +24,13 @@ const ProductsCategories = () => {
 			<div className=''>
 				<div>
 					{categories.map((category, index) => (
-						<div
+						<li
 							key={index}
 							onClick={() => categoryClick(category)}
-							className="category-item"
+							className="category-item cursor-pointer p-2 hover:opacity-70 transition duration-200"
 						>
-							{category}
-						</div>
+							{categoryLabels[category]}
+						</li>
 					))}
 				</div>
 			</div>

@@ -11,12 +11,18 @@ const Navbar = () => {
 	const currentRoute = location.pathname
 	const nav = useNavigate()
 
+	// Map category names for display
 	const routeNames = {
 		'/products': 'Produktų kategorijos',
 		'/collections': 'Kolekcijos',
 		'/care': 'Priežiūra',
 		'/contacts': 'Kontaktai',
 		'/addproduct': 'Pridėti produktą'
+	};
+	const categoryLabels = {
+		Plants: 'Sodo augalai',
+		Accessories: 'Įrankiai',
+		Tools: 'Priedai'
 	};
 	// Split the current route into parts
 	const pathParts = currentRoute.split('/').filter(part => part);
@@ -34,7 +40,7 @@ const Navbar = () => {
 	pathParts.forEach((part, index) => {
 		currentPath += `/${part}`;
 		const isLast = index === pathParts.length - 1;
-		const routeLabel = routeNames[currentPath] || decodeURIComponent(part);
+		const routeLabel = routeNames[currentPath] || categoryLabels[part] || decodeURIComponent(part);
 
 		if (isLast) lastRoutePath = routeLabel
 		// Override the last route label if it's "/addproduct"
@@ -67,7 +73,7 @@ const Navbar = () => {
 
 	return (
 		<div className="h-[159px] w-full flex flex-col justify-evenly">
-			<div className='flex items-center gap-3'>
+			<div className='flex items-center gap-3 navBar'>
 				{breadcrumbs}
 			</div>
 			<div className='flex justify-between items-center'>
