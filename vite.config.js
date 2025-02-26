@@ -6,5 +6,5 @@ export default defineConfig({
 	plugins: [
 		react(),
 	],
-	base: 'https://github.com/TriboRibo/Webrom_front_test'
+	base: '/Webrom_front_test'
 })
