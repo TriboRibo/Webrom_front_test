@@ -2,10 +2,13 @@ import React, {useState} from 'react';
 import ProductCard from "../components/products/ProductCard";
 import {useParams} from "react-router-dom";
 import Navbar from "../components/Navbar";
+import useMainStore from "../store/mainStore";
 
 const ProductList = () => {
 
-	const [basket, setBasket] = useState([]);
+	// const [basket, setBasket] = useState([]);
+	const { category } = useParams();
+	const { addToBasket } = useMainStore()
 
 	const products = [
 		{
@@ -58,16 +61,11 @@ const ProductList = () => {
 		}
 	]
 
-	const { category } = useParams();
 	const filteredProducts = products.filter(product => product.category === category)
-
-	const addToBasket = () => {
-		setBasket([...basket, product])
-	}
 
 	return (
 		<>
-			<div className='grid grid-cols-1 gap-5 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'>
+			<div className='grid gap-5 grid-cols-1 custom-lg:grid-cols-2 custom:grid-cols-3 justify-center'>
 				{filteredProducts.length > 0 ? (
 					filteredProducts.map((product, index) => (
 						<ProductCard key={index} product={product} addToBasket={addToBasket} />

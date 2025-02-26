@@ -1,14 +1,22 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Button from "../Button";
 import ButtonBasket from "../icons/ButtonBasket";
+import Check from "../icons/Check";
+import useMainStore from "../../store/mainStore";
 
-const ProductCard = ({ product, addToBasket }) => {
+const ProductCard = ({product}) => {
 
+	const {basket, addToBasket, removeFromBasket} = useMainStore()
 	const [isAdded, setIsAdded] = useState(false)
 
 	const finalPrice = product.discount > 0 ? (product.price - product.discount).toFixed(2) : product.price.toFixed(2)
 
+	useEffect(() => {
+		setIsAdded(basket.some((item) => item.name === product.name))
+	}, [basket, product.name])
+
 	const handleAddToBasket = () => {
+		addToBasket(product)
 		setIsAdded(true)
 	}
 
@@ -19,26 +27,26 @@ const ProductCard = ({ product, addToBasket }) => {
 					<img src={product.image} alt={product.name}/>
 				</div>
 				<div>
-					<div className='item-card-description'>
-						<div>{product.name}</div>
-						<div>{product.description}</div>
-						<div>{finalPrice}</div>
+					<div className='item-card-description flex flex-col justify-between h-full p-4'>
+						<h3>{product.name}</h3>
+						<p className='description '>{product.description}</p>
+						<p className='price flex items-center gap-2'>{finalPrice} € <span className='oldPrice'>{product.price} €</span></p>
 					</div>
 					<div className='flex justify-end items-end h-[66px]'>
 						<Button
 							height='56px'
 							width='187px'
-							text={isAdded ? 'Pridėta' : 'Pridėti į krepšelį'}
+							text={isAdded ? 'Krepšelyje' : 'Pridėti į krepšelį'}
 							variant='shop'
 							iconPosition='left'
-							icon={ButtonBasket}
+							icon={isAdded ? Check : ButtonBasket}
 							onClick={!isAdded ? handleAddToBasket : undefined}
 							disabled={isAdded}
 						/>
 					</div>
 				</div>
 			</div>
-			
+
 		</>
 	);
 };
