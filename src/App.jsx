@@ -15,7 +15,7 @@ const App = () => {
 	return (
 		<>
 			<BrowserRouter>
-				<div className='ps-[100px] pe-[100px] backGround min-h-screen w-full'>
+				<div className='backGround px-[15px] md:px-[100px] min-h-screen max-w-[1440px] mx-auto'>
 					<Toolbar/>
 					<Routes>
 						<Route element={<MainLayout/>}>

@@ -5,9 +5,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.backGround{
+body {
     background: linear-gradient(to top, #1F74B7, #FAFAFA);
-    width: 100%;
+
 }
 
 .toolbar {
