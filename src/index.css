@@ -7,6 +7,7 @@
 
 .backGround{
     background: linear-gradient(to top, #1F74B7, #FAFAFA);
+    width: 100%;
 }
 
 .toolbar {
@@ -58,6 +59,7 @@ h3 {
 .item-card {
     display: flex;
     width: 400px;
+    flex-wrap: wrap;
 }
 .item-card-image {
     width: 200px;

@@ -65,7 +65,7 @@ const ProductList = () => {
 
 	return (
 		<>
-			<div className='grid gap-5 grid-cols-1 custom-lg:grid-cols-2 custom:grid-cols-3 justify-center'>
+			<div className='grid gap-5 grid-cols-1 custom-lg:grid-cols-2 custom:grid-cols-3 justify-center place-items-center sm:place-items-center'>
 				{filteredProducts.length > 0 ? (
 					filteredProducts.map((product, index) => (
 						<ProductCard key={index} product={product} addToBasket={addToBasket} />
